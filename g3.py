@@ -66,12 +66,12 @@ class g3sensor():
         pm25=int(data_hex[20]+data_hex[21]+data_hex[22]+data_hex[23],16)
         pm10=int(data_hex[24]+data_hex[25]+data_hex[26]+data_hex[27],16)
         if 1:
-		print "pm1_cf: "+str(pm1_cf)
-		print "pm25_cf: "+str(pm25_cf)
-		print "pm10_cf: "+str(pm10_cf)
-		print "pm1: "+str(pm1)
+	#	print "pm1_cf: "+str(pm1_cf)
+	#	print "pm25_cf: "+str(pm25_cf)
+	#	print "pm10_cf: "+str(pm10_cf)
+	#	print "pm1: "+str(pm1)
 		print "pm25: "+str(pm25)
-		print "pm10: "+str(pm10)
+	#	print "pm10: "+str(pm10)
         data = [pm1_cf, pm10_cf, pm25_cf, pm1, pm10, pm25]
     	self.serial.close()
         return data
@@ -89,7 +89,8 @@ if __name__ == '__main__':
     while True:
         pmdata=0
         try:
-            pmdata=air.read("/dev/ttyAMA0")
+           while True:
+             pmdata=air.read("/dev/ttyAMA0")
         except: 
             next
         if pmdata != 0:
